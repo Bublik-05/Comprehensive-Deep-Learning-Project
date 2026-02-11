@@ -1,0 +1,21 @@
+Ethics, Bias & Fairness Report (400–600 words template)
+
+Privacy
+This project uses patient-adjacent data sources (text messages and medical images). Even when datasets are public, similar systems trained on real clinical notes or imaging archives can leak sensitive health information through memorization, membership inference, or unintended sharing of identifiers. Privacy risk is especially high for rare conditions where individual cases may be identifiable. We therefore treat all model outputs as potentially sensitive and avoid storing raw inputs in logs. Synthetic data generation (Part 3) can help reduce direct exposure to real patient records by augmenting training with generated samples; however, synthetic data is not automatically “private.” If the generative model overfits, it may reproduce training examples. In a real deployment we would add privacy safeguards such as strict de-identification, access controls, and privacy auditing (e.g., nearest-neighbor checks or membership inference testing) before using synthetic outputs.
+
+Fairness
+Healthcare models can behave differently across patient populations due to dataset imbalance (age, sex, ethnicity, socioeconomic factors), site effects (different hospitals and devices), and label bias (diagnosis practices vary). In our setting, demographics are not available in the chosen datasets, so we cannot compute subgroup metrics directly. Nevertheless, bias can still exist. For example, the vision model might overfit to acquisition artifacts from one source, and the text model might underperform on language varieties or message styles not represented in training. In a clinical setting, we would collect subgroup metadata and evaluate performance across clinically relevant strata (age groups, sex, skin tone for dermatology, device type, and sites). Mitigation strategies include balanced sampling, reweighting, domain adaptation, and collecting external validation sets from multiple hospitals.
+
+Transparency & Explainability
+Model predictions in medicine must be explainable to clinicians and patients. For text, explanations can include highlighting influential tokens (attention weights, gradient-based saliency) and providing a short rationale (“keywords suggesting urgency”). For images, interpretability tools such as Grad-CAM can visualize regions that drive the prediction. Interpretability is critical because a correct prediction for the wrong reason (e.g., hospital watermark) can fail catastrophically on new sites. Explanations also support clinical trust, auditing, and error analysis.
+
+Clinical Validation
+Before deployment, the system requires clinical validation: prospective testing, calibration checks, and robustness evaluation across sites and devices. False negatives may delay treatment (high risk in pneumonia screening), while false positives may cause unnecessary follow-ups and anxiety. Threshold selection should be guided by clinical utility and resource constraints, not only accuracy. Human-in-the-loop workflows are recommended: the model assists but does not replace clinicians, and uncertain cases are escalated.
+
+Dual-use Risks
+Generative models could be misused to fabricate medical images or records, enabling fraud or misinformation. To reduce harm, we would restrict access to generation capabilities, watermark synthetic outputs, log usage, and share models only under appropriate governance. In addition, we would clearly label synthetic data and never mix it with real patient records without controls.
+
+Recommendations (include at least 2)
+1) Perform external validation on multi-site datasets and report subgroup metrics; add reweighting or data collection to address disparities.
+2) Add explainability artifacts (Grad-CAM for images; token attribution for text) and an uncertainty threshold to trigger clinician review.
+3) Add privacy audits for synthetic data (nearest-neighbor checks, membership inference tests) and enforce access control on generated outputs.

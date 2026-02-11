@@ -1,0 +1,14 @@
+model: transformer
+dropout: 0.5
+weight_decay: 1e-05
+params: 326658
+train_time_sec: 109.97087590000001
+train_acc: 0.9930804715530497
+val_acc: 0.9880382775119617
+test_acc: 0.9856459330143541
+overfit_severity: 0.005042194041087966
+model_size_mb: 1.2749433517456055
+train_loss: 0.03046663286671096
+val_loss: 0.06534662109657398
+test_loss: 0.0592436402479911
+exp_dir: drop0.5_wd1e-05

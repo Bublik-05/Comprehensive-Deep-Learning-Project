@@ -1,0 +1,40 @@
+PART 1 — Medical Text Analysis (7 pts)
+1. Dataset & preprocessing
+   - Dataset: SMS Spam Collection (reframed as patient communication: legitimate reminders vs unwanted messages).
+   - Train/val/test split, tokenization, vocab size, max_len.
+2. LSTM/GRU model
+   - Architecture details + hyperparameters.
+   - Regularization grid: dropout 0.1/0.3/0.5; weight decay 1e-5/1e-4/1e-3; early stopping.
+   - Figure: LSTM curves (train/val loss + acc)
+   - Figure: Gradient norms (embedding vs recurrent vs classifier)
+3. Transformer (encoder-only) model
+   - Input embedding, positional encoding, 3 encoder layers, 4 heads, FF=128, dropout.
+   - Same regularization grid + early stopping.
+   - Figure: Transformer curves (loss + acc)
+4. Comparison table (params, train time, final acc, overfitting severity)
+5. 150–250 words: why Transformer out/underperforms LSTM
+
+PART 2 — Medical Image Analysis (6 pts)
+1. Dataset: PneumoniaMNIST (chest X-ray), transforms/augmentation
+2. Model capacity comparison: ResNet-18 vs ResNet-50
+   - Figure: curves for each model
+   - Table: precision, recall, F1, AUC (test)
+   - Figure: 5–10 prediction visualizations
+3. 200–300 words: diagnose bias/variance + what regularization helped
+
+PART 3 — Synthetic Data Generation (5 pts)
+1. VAE architecture & training
+   - Figure: recon loss + KL curves
+   - Figure: 10–20 generated samples
+2. 150–200 words reflection (challenge + fix + privacy)
+
+PART 4 — Deployment & Optimization (4 pts)
+1. Model chosen: Transformer text model
+2. Techniques: pruning + int8 dynamic quantization
+   - Table: size (MB), inference time (ms), accuracy drop
+3. 100–150 words explanation
+
+PART 5 — Ethics, Bias & Fairness (3 pts)
+1. Bias audit (if no demographics: discuss expected biases + how to test; optional proxy subgroups)
+2. Ethics report (400–600 words): privacy, fairness, explainability, validation, dual-use
+3. 2+ recommendations

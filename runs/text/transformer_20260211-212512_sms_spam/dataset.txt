@@ -1,0 +1,3 @@
+dataset=sms_spam
+text_key=sms
+label_key=label

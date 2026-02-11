@@ -1,0 +1,14 @@
+model: lstm
+dropout: 0.1
+weight_decay: 0.001
+params: 584578
+train_time_sec: 30.656459399999903
+train_acc: 0.9728344438749359
+val_acc: 0.9449760765550239
+test_acc: 0.9485645933014354
+overfit_severity: 0.02785836731991198
+model_size_mb: 2.232804298400879
+train_loss: 0.07525962882304991
+val_loss: 0.17440328498681387
+test_loss: 0.15421999501133407
+exp_dir: drop0.1_wd0.001
